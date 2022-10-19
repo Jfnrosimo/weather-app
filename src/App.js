@@ -1,25 +1,60 @@
-import logo from './logo.svg';
+import { Component } from 'react';
 import './App.css';
+import TimeSeries from './components/TimeSeries';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+class App extends Component {
+  constructor(){
+    super();
+
+    this.apiUrl = "https://api.met.no/weatherapi/locationforecast/2.0/complete";
+
+    this.state = {
+      timeSeriesData: []
+    }
+  }
+
+  componentDidMount(){
+    navigator.geolocation.getCurrentPosition((pos) => {
+
+      //get API
+      fetch(
+        `${this.apiUrl}?lat=${pos.coords.latitude}&lon=${pos.coords.longitude}`
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          this.setState({timeSeriesData: data.properties.timeseries})
+        })
+    })
+  }
+
+
+  render(){
+    return(
+      <>
+        <h1>Weather App</h1>
+
+        <main>
+
+        {
+          this.state.timeSeriesData.map((seriesData,index) => {
+            return(
+              index < 6 && (
+                <TimeSeries 
+                  key={index}
+                  time={seriesData.time}
+                  data={seriesData.data}
+                />
+              )
+            )
+          })
+        }
+
+        </main>
+        
+      </>
+    )
+  }
 }
 
 export default App;

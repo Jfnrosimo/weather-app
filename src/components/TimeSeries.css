@@ -1,0 +1,70 @@
+main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+.timeSeriesCard-container {
+  padding: 15px 10px;
+  background-color: rgb(220, 220, 220, 0.3);
+
+  border: 1px solid lightgray;
+  border-radius: 8px;
+
+  width: 30%;
+  display: inline-block;
+
+  margin: 0 10px 15px 0;
+}
+
+.time-display {
+  font-size: 0.6rem;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  color: #e9dac1;
+}
+
+.cold,
+.normal,
+.hot {
+  font-size: 2.5rem;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+/* Weather color */
+.cold {
+  color: lightblue;
+}
+
+.normal {
+  color: lightgreen;
+}
+
+.hot {
+  color: red;
+}
+
+/* sub-container for other weather details */
+.wind-details-container {
+  display: flex;
+  justify-content: space-between;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  color: #caf7e3;
+}
+
+.cold img,
+.normal img,
+.hot img {
+  width: 50px;
+  height: 50px;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: rgb(20, 20, 20, 0.3);
+}
+
+.wind-sub-container {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  color: #30475e;
+}
